@@ -4,9 +4,12 @@ using System.Text;
 
 namespace CSharp.Generics.Study
 {
-    //  T here is a type parameter
-    //  T is a conventional letter for this case. It could as well be TResult, V, E, car, ...
-    public class Container<T>
+    //  https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/constraints-on-type-parameters
+    //  where T : class
+    //  where T : struct
+    //  where T : new()
+    //  ...
+    public class Container<T> where T : struct
     {
         public T Element { get; set; }
     }
