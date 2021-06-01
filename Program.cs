@@ -6,13 +6,18 @@ namespace CSharp.Generics.Study
     {
         static void Main(string[] args)
         {
-            //  This doesn't work because, string is a class, not a struct
-            //  Container<string> stringContainer = new Study.Container<string>();  
+            var stringContainer = new Container<string>("A string container");
 
-            Container<int> intContainer = new Study.Container<int>();   //  int = Int32 -> struct
+            var sample = new SampleNonGeneric();
 
+            //  invoking the generic method of generic class
+            stringContainer.PrintMessageGeneric<DateTime>(DateTime.Now);   //  T of this method can be inferred from the type of the argument being passed
 
-            int intElement = intContainer.Element;
+            //  invoking the non-generic method of a generic class
+            stringContainer.PrintMessageNonGeneric(stringContainer.Element);
+
+            //  invoking the generic method of a non-generic class
+            sample.PrintMessageGeneric(3.1415); //  <double> is inferred
         }
     }
 }

@@ -4,13 +4,37 @@ using System.Text;
 
 namespace CSharp.Generics.Study
 {
-    //  https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/constraints-on-type-parameters
-    //  where T : class
-    //  where T : struct
-    //  where T : new()
-    //  ...
-    public class Container<T> where T : struct
+    //  
+    public class Container<T>
     {
-        public T Element { get; set; }
+        public T Element { get; }
+
+        public Container(T element)
+        {
+            Element = element;
+        }
+
+        public T Get()
+        {
+            return Element;
+        }
+
+        public void PrintMessageGeneric<TMessage>(TMessage message)
+        {
+            Console.WriteLine($"Generic PrintMessage in Container: {message}");
+        }
+
+        public void PrintMessageNonGeneric(string message)
+        {
+            Console.WriteLine($"Non-generic PrintMessage in Container: {message}");
+        }
+    }
+
+    public class SampleNonGeneric
+    {
+        public void PrintMessageGeneric<TMessage>(TMessage message)
+        {
+            Console.WriteLine($"Generic PrintMessage in SampleNonGeneric: {message}");
+        }
     }
 }
