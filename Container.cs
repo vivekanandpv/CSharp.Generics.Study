@@ -8,6 +8,6 @@ namespace CSharp.Generics.Study
     //  T is a conventional letter for this case. It could as well be TResult, V, E, car, ...
     public class Container<T>
     {
-
+        public T Element { get; set; }
     }
 }
